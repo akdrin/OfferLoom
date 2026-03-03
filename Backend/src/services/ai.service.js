@@ -24,7 +24,7 @@ const interviewReportSchema= z.object({
         severity: z.enum(["low","medium","high"]).describe("The severity of the skill gap i.e how much it is impprtant from the job description")
     })).describe("List of skill gaps in the candidate's profile along with their severity"),
     preparationPlan: z.array(z.object({
-        day: z.number().describe("The day number in the preparation plan starting from 1"),
+        day: z.number().describe("The day number in the preparation plan starting from 1 "),
         focus: z.string().describe("The main focus of this day in the preparation plan e.g data structures & mock interviews"),
         tasks: z.array(z.string()).describe("List of tasks that can be done in this day to follow the preparation plan e.g study a specific topic of data structures or system design etc")
     })).describe("A day-wise preparation plan for the candidate to follow the order to prepare for the interview effectively")
