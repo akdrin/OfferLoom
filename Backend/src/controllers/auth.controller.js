@@ -12,7 +12,7 @@ async function registerUserController(req,res){
     const {username ,email ,password}= req.body
 
     if(!username || !password || !email){
-        return req.status(400).json({
+        return res.status(400).json({
             message: "Please provide username,email and password"
         })
     }
@@ -22,7 +22,7 @@ async function registerUserController(req,res){
     })
 
     if(isUserAlreadyExist){
-        return req.status(400).json({
+        return res.status(400).json({
             message: "Account already exist with this email or Username"
         })
     }
@@ -61,14 +61,14 @@ async function loginUserController(req,res){
     const {username, password} =req.body
     const user=await userModel.findOne({username})
     if(!user){
-        return req.status(400).json({
+        return res.status(400).json({
             message: "Invalid Username or Password"
         })
     }
     const isPasswordValid= bcrypt.compare(password , user.password)
 
     if(!isPasswordValid){
-        return req.status(400).json({
+        return res.status(400).json({
             message: "Invalid Username or Password"
         })
     }
